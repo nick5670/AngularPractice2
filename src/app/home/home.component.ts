@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    console.log(this.closeResult)
   }
 
   open(content: any) {
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      console.log(this.closeResult)
     });
   }
   

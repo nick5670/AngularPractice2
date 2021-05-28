@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/data.service';
 import { User } from 'src/app/model/user';
 
@@ -15,13 +15,15 @@ export class AddUserComponent implements OnInit {
 
   users!: Array<User>
 
+  username = new FormControl('',[Validators.required, Validators.minLength(3)])
+
   constructor(private formBuilder: FormBuilder, private service: DataService) { }
 
 
   ngOnInit(): void {
 
     this.addForm= this.formBuilder.group({
-      username: '',
+      username: this.username,
       email: '',
       role: ''
     })

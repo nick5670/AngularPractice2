@@ -7,6 +7,7 @@
         <form [formGroup]="addForm">
             <label name="username">Username</label>
             <input type="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username" formControlName="username">
+            <div *ngIf = "username.hasError('minlength')"> Name needs to be longer than 2 letters</div>
             <br/>
           
             <label name = "email">Email</label>
