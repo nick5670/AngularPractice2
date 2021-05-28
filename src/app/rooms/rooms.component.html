@@ -1,0 +1,26 @@
+<div class= "container">
+<h1>Rooms</h1>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Room #</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let room of rooms" [ngClass] = "{'table-danger' : room.isOpen === false, 
+      'table-success' : room.isOpen === true}">
+        <td>{{room.name}}</td>
+        <td>{{room.id}}</td>
+        <td>
+            <button type="button" class="btn btn-primary" (click) = "getSelectedRoom(room.id)">view</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-room-detail [room] = 'selectedRoom' *ngIf = "action === 'view'"></app-room-detail>
+  <app-book-room [bookedRoom] = 'selectedRoom' *ngIf = "action === 'book'"></app-book-room>
+  <app-booked-info *ngIf = "action === 'info'" [bookedInfo] = 'selectedRoom'></app-booked-info>
+</div>
+

@@ -1,0 +1,22 @@
+
+<div class= "container">
+<div class="card">
+    <div class="card-header">
+        Room Details
+    </div>
+    <div class="card-body">
+       <h1>{{room.name}}</h1> 
+       <p>Room Number: {{room.id}}</p> 
+       <p>Room Capacity: {{room.capacity}}</p>
+       <div *ngIf = "room.isOpen">
+            <button type="button" class="btn btn-primary" (click)= 'roomBooked()'>Book Room</button>
+        </div>
+
+        <div *ngIf = "!room.isOpen">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" (click)= 'roomInfo()' #elseBlock>Room Info</button>
+        </div>
+    </div>
+  </div>
+  <app-book-room *ngIf = "action === 'book'" [bookedRoom] = 'room'></app-book-room>
+  <app-booked-info *ngIf = "action === 'info'" [bookedInfo] = 'room'></app-booked-info>
+</div>

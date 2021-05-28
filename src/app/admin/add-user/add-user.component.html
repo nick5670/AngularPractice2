@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">
+        Role Management
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Add User</h5>
+        <form [formGroup]="addForm">
+            <label name="username">Username</label>
+            <input type="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username" formControlName="username">
+            <br/>
+          
+            <label name = "email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email here" formControlName="email">
+    
+            <label name = "role">Role</label>
+            <select class="form-control" formControlName="role">
+                <option>user</option>
+                <option>admin</option>
+            </select>
+            <button type = "button" class= "btn btn-primary" (click)= "onSubmit()">Add</button>
+          </form> 
+    </div>
+    </div>
