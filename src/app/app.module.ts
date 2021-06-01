@@ -14,7 +14,6 @@ import { HomeComponent } from './home/home.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { EditUserComponent } from './admin/edit-user/edit-user.component';
 import { ModalComponent } from './modal/modal.component';
-import { BookRoomComponent } from './rooms/book-room/book-room.component';
 import { BookedInfoComponent } from './rooms/booked-info/booked-info.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -36,8 +35,7 @@ const routes: Routes =[
     AddUserComponent,
     EditUserComponent,
     ModalComponent,
-    BookRoomComponent,
-    BookedInfoComponent
+    BookedInfoComponent,
   ],
   imports: [
     BrowserModule,

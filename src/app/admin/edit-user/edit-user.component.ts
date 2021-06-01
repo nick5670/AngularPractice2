@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FormResetService } from 'src/app/form-reset-service';
 import { User } from 'src/app/model/user';
 
@@ -16,7 +17,8 @@ export class EditUserComponent implements OnInit {
   editForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private formReset: FormResetService) { }
+              private formReset: FormResetService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -42,6 +44,11 @@ export class EditUserComponent implements OnInit {
     this.user.name =this.editForm.value['username'];
     this.user.email =this.editForm.value['email']
     this.user.role =this.editForm.value['role']
+  }
+
+  onCancel()
+  {
+    this.router.navigate(['admin']);
   }
 
 }

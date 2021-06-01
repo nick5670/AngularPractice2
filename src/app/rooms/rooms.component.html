@@ -20,7 +20,6 @@
     </tbody>
   </table>
   <app-room-detail [room] = 'selectedRoom' *ngIf = "action === 'view'"></app-room-detail>
-  <app-book-room [bookedRoom] = 'selectedRoom' *ngIf = "action === 'book'"></app-book-room>
   <app-booked-info *ngIf = "action === 'info'" [bookedInfo] = 'selectedRoom'></app-booked-info>
 </div>
 

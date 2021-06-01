@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
 import { User } from 'src/app/model/user';
 
@@ -17,7 +18,8 @@ export class AddUserComponent implements OnInit {
 
   username = new FormControl('',[Validators.required, Validators.minLength(3)])
 
-  constructor(private formBuilder: FormBuilder, private service: DataService) { }
+  constructor(private formBuilder: FormBuilder, private service: DataService,
+              private router: Router) { }
 
 
   ngOnInit(): void {
@@ -46,6 +48,11 @@ export class AddUserComponent implements OnInit {
       this.users.push(newUser);
       console.log(this.users);
     
+  }
+
+  onCancel()
+  {
+    this.router.navigate(['admin']);
   }
 
 }
