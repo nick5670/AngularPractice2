@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    console.log(this.closeResult)
   }
 
   open(content: any) {

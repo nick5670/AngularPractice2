@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Room } from 'src/app/model/room';
@@ -31,12 +31,15 @@ export class RoomDetailComponent implements OnInit {
       }
     )
 
-
+    //make sure this updates everytime we want to submit a new room form
+    // Currently data from an older form is staying in thr form and not 
+    // allowing for new data to be added
     this.roomForm = this.builder.group({
       bookerName : "Please enter your name",
-      numOccupants : 0,
+      numOccupants : [0, Validators.max(this.room.capacity)],
       startTime : '',
       endTime : ''
+
     })
   }
 
@@ -66,5 +69,6 @@ export class RoomDetailComponent implements OnInit {
     this.room.isOpen= false;
 
     this.modalService.dismissAll('Saved change');
+    this.router.navigate(['rooms']);
   }
 }

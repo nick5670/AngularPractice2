@@ -17,7 +17,6 @@
         </div>
     </div>
   </div>
-  <app-booked-info *ngIf = "action === 'info'" [bookedInfo] = 'room'></app-booked-info>
 </div>
 
 
@@ -38,6 +37,9 @@
             <div class="form-group">
                 <label for="location">Number of Occupants</label>
                 <input type="number" class="form-control" id="occupants" formControlName="numOccupants" required>
+                <div *ngIf = "roomForm.controls['numOccupants'].errors">
+                    Too many ocuupants for this room!
+                </div>
             </div>
             <div class="form-group">
                 <label for="location">Start Time</label>
