@@ -1,25 +1,31 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DialogRef, Modal, ModalComponent, overlayConfigFactory } from 'ngx-modialog-7';
+import { BSModalContext } from 'ngx-modialog-7/plugins/bootstrap';
+import { DataService } from 'src/app/data.service';
 import { Room } from 'src/app/model/room';
+import { RoomBookModalComponent } from '../room-book-modal/room-book-modal.component';
+
+
+export class RoomDetailModalContext extends BSModalContext{
+  public title!: string;
+}
 
 @Component({
   selector: 'app-room-detail',
   templateUrl: './room-detail.component.html',
   styleUrls: ['./room-detail.component.css']
 })
-export class RoomDetailComponent implements OnInit {
+export class RoomDetailComponent implements OnInit{
 
   @Input()
   room!: Room;
   action!: string;
-
   details = new Array<string>();
-  roomForm!: FormGroup;
   
   constructor(private router: Router, private route: ActivatedRoute,
-              private modalService: NgbModal, private builder: FormBuilder) { }
+              private modal: Modal, private service: DataService) { }
 
   ngOnInit(): void {
 
@@ -27,20 +33,8 @@ export class RoomDetailComponent implements OnInit {
 
       (params) =>{
         this.action = params['action'];
-        
       }
     )
-
-    //make sure this updates everytime we want to submit a new room form
-    // Currently data from an older form is staying in thr form and not 
-    // allowing for new data to be added
-    this.roomForm = this.builder.group({
-      bookerName : "Please enter your name",
-      numOccupants : [0, Validators.max(this.room.capacity)],
-      startTime : '',
-      endTime : ''
-
-    })
   }
 
   roomBooked()
@@ -53,22 +47,13 @@ export class RoomDetailComponent implements OnInit {
     this.router.navigate(['rooms'], {queryParams : {action: 'info', id: this.room.id}})
   }
 
-  open(content: any)
+  open()
   {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    const modalConfig = {
+			isBlocking: true,
+			size: 'md'}
+    this.router.navigate(['rooms'], {queryParams: {action: 'book',id: this.room.id}})
+    this.modal.open(RoomBookModalComponent,overlayConfigFactory(modalConfig,BSModalContext));
   }
 
-  onSubmit()
-  {
-    this.details.push(this.roomForm.value['bookerName']);
-    this.details.push(this.roomForm.value['numOccupants']);
-    this.details.push(this.roomForm.value['startTime']);
-    this.details.push(this.roomForm.value['endTime']);
-
-    this.room.bookedRoomDetails= this.details;
-    this.room.isOpen= false;
-
-    this.modalService.dismissAll('Saved change');
-    this.router.navigate(['rooms']);
-  }
 }

@@ -16,6 +16,9 @@ import { EditUserComponent } from './admin/edit-user/edit-user.component';
 import { ModalComponent } from './modal/modal.component';
 import { BookedInfoComponent } from './rooms/booked-info/booked-info.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-modialog-7';
+import { BootstrapModalModule } from 'ngx-modialog-7/plugins/bootstrap';
+import { RoomBookModalComponent } from './rooms/room-book-modal/room-book-modal.component';
 
 const routes: Routes =[
   {path: 'admin', component: AdminComponent},
@@ -36,13 +39,15 @@ const routes: Routes =[
     EditUserComponent,
     ModalComponent,
     BookedInfoComponent,
+    RoomBookModalComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    ModalModule.forRoot(),
+    BootstrapModalModule
   ],
   exports:[
     RouterModule
