@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-modialog-7';
 import { BootstrapModalModule } from 'ngx-modialog-7/plugins/bootstrap';
 import { RoomBookModalComponent } from './rooms/room-book-modal/room-book-modal.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes =[
   {path: 'admin', component: AdminComponent},
@@ -39,7 +40,7 @@ const routes: Routes =[
     EditUserComponent,
     ModalComponent,
     BookedInfoComponent,
-    RoomBookModalComponent,
+    RoomBookModalComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,8 @@ const routes: Routes =[
     FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    BootstrapModalModule
+    BootstrapModalModule,
+    HttpClientModule
   ],
   exports:[
     RouterModule

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogRef, ModalComponent } from 'ngx-modialog-7';
@@ -20,6 +20,7 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
   bookingRoom!: Room;
 
   rooms!: Array<Room>;
+
   details = new Array<string>();
   roomForm!: FormGroup;
   
@@ -33,33 +34,51 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
                private route: ActivatedRoute) { 
   }
 
-  ngOnInit(): void {
+  loadData()
+  {
     this.service.getRooms().subscribe(
-         next =>{
-          this.rooms= next
-      });
+      next => {
+        this.rooms = next;
+        this.processUrlParams();
+        this.createForm();
+      }
+    )
+  }
 
+  processUrlParams()
+  {
     this.route.queryParams.subscribe(
       (params)=>{
         const id = params['id'];
         if(params['action'] === 'book')
         {
-          this.bookingRoom = this.rooms.find(room =>room.id === +id)!;
+          this.bookingRoom = this.rooms.find(room => room.id === +id)!;
         }
       }
-    )
+    );
+  }
 
+  createForm()
+  {
 
     //make sure this updates everytime we want to submit a new room form
     // Currently data from an older form is staying in thr form and not 
     // allowing for new data to be added
     this.roomForm = this.builder.group({
       bookerName : "Please enter your name",
-      numOccupants : [0, Validators.max(this.bookingRoom.capacity)],
+      numOccupants : [0 ,Validators.max(this.bookingRoom.capacity)],
       startTime : '',
       endTime : ''
 
     });
+  }
+
+
+
+  ngOnInit(): void {
+
+    this.loadData();
+
   }
 
   handleClose()
@@ -68,7 +87,6 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
   }
   
   onSubmit(){
-
     this.details.push(this.roomForm.value['bookerName']);
     this.details.push(this.roomForm.value['numOccupants']);
     this.details.push(this.roomForm.value['startTime']);
@@ -77,7 +95,8 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
     this.bookingRoom.bookedRoomDetails= this.details;
     this.bookingRoom.isOpen= false;
 
-    //this.modalService.dismissAll('Saved change');
+    this.service.updateRoomBooking(this.bookingRoom).subscribe();
+
     this.dialog.close();
     this.router.navigate(['rooms']);
 

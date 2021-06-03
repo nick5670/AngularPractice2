@@ -5,10 +5,10 @@
       </button>
     </div>
     <div class="modal-body">
-        <form [formGroup] = "roomForm">
+        <form *ngIf = "bookingRoom" [formGroup] = "roomForm">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name"formControlName= "bookerName" required >
+                <input type="text" class="form-control" id="name" formControlName= "bookerName" required >
               </div>
             <div class="form-group">
                 <label for="location">Number of Occupants</label>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
@@ -17,6 +17,9 @@ export class AddUserComponent implements OnInit {
   users!: Array<User>
 
   username = new FormControl('',[Validators.required, Validators.minLength(3)])
+
+  @Output()
+  addedUserEvent = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder, private service: DataService,
               private router: Router) { }
@@ -45,8 +48,13 @@ export class AddUserComponent implements OnInit {
       newUser.name = this.addForm.value.username;
       newUser.role=this.addForm.value.role;
       newUser.id= this.users.length+1;
-      this.users.push(newUser);
-      console.log(this.users);
+      this.service.addUser(newUser).subscribe(
+        (user) =>
+        {
+          this.addedUserEvent.emit();
+          this.router.navigate(['admin']);
+        }
+      );
     
   }
 

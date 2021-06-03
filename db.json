@@ -1,0 +1,86 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Nick",
+      "email": "nick.gerstbrein@uline.com",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Ron",
+      "email": "'ron@yahoo.com'",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "name": "Praveen",
+      "email": "praveen@yahoo.com",
+      "role": "user"
+    },
+    {
+      "id": 4,
+      "name": "Qwei",
+      "email": "Qwei@yahoo.com",
+      "role": "user"
+    },
+    {
+      "id": 5,
+      "name": "Pengxiang",
+      "email": "pengxiang@yahoo.com",
+      "role": "user"
+    },
+    {
+      "email": "jandj@hotmail.com",
+      "name": "Jean",
+      "role": "user",
+      "id": 6
+    },
+    {
+      "email": "blah.com",
+      "name": "you",
+      "role": "user",
+      "id": 7
+    },
+    {
+      "email": "Jack.com",
+      "name": "Jack",
+      "role": "admin",
+      "id": 8
+    }
+  ],
+  "rooms": [
+    {
+      "id": 1,
+      "numPeople": 0,
+      "name": "Ball room",
+      "capacity": 20,
+      "isOpen": true,
+      "bookedRoomDetails": []
+    },
+    {
+      "id": 2,
+      "numPeople": 0,
+      "name": "Conference room",
+      "capacity": 30,
+      "isOpen": true,
+      "bookedRoomDetails": []
+    },
+    {
+      "id": 3,
+      "numPeople": 0,
+      "name": "Arena",
+      "capacity": 250,
+      "isOpen": true,
+      "bookedRoomDetails": []
+    },
+    {
+      "id": 4,
+      "numPeople": 0,
+      "name": "Lounge",
+      "capacity": 5,
+      "isOpen": true,
+      "bookedRoomDetails": []
+    }
+  ]
+}

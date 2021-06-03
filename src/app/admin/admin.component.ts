@@ -26,16 +26,19 @@ export class AdminComponent implements OnInit {
               private route: ActivatedRoute,
               private formReset: FormResetService) { }
 
-
-
-  ngOnInit(): void {
-
+  
+  loadData()
+  {
     this.service.getUsers().subscribe(
       next =>{
         this.users= next;
       }
     );
+  }
 
+  ngOnInit(): void {
+
+    this.loadData();
     this.route.queryParams.subscribe(
 
       (params) =>{

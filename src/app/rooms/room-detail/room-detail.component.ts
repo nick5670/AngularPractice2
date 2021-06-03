@@ -21,6 +21,7 @@ export class RoomDetailComponent implements OnInit{
 
   @Input()
   room!: Room;
+  
   action!: string;
   details = new Array<string>();
   

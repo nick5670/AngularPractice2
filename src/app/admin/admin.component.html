@@ -30,6 +30,6 @@
     </table>
   </div>
   <button type="button" class="btn btn-primary" (click) ="addUser()">Add User</button>
-  <app-add-user *ngIf = "action === 'add'"></app-add-user>
+  <app-add-user *ngIf = "action === 'add'" (addedUserEvent) = "loadData()"></app-add-user>
   <app-edit-user *ngIf = "action === 'edit'" [user] = 'selectedUser'></app-edit-user>
 </div>

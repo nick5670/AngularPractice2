@@ -1,98 +1,64 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Room } from './model/room';
 import { User } from './model/user';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private users = new Array<User>();
-  private rooms = new Array<Room>();
-
-
   getRooms(): Observable<Array<Room>>
   {
-    return of(this.rooms);
+    return this.http.get<Array<Room>>(environment.apiUrl +'/rooms')
+    .pipe(
+      map( data => 
+        {
+          const rooms = new Array<Room>();
+          for(const room of data)
+          {
+            rooms.push(Room.fromHttp(room));
+          }
+          return rooms;
+      })
+    );
   }
 
   getUsers(): Observable<Array<User>>
   {
-    return of(this.users);
+    return this.http.get<Array<User>>(environment.apiUrl +'/users')
+    .pipe(
+      map( data => 
+        {
+          const users = new Array<User>();
+          for(const u of data)
+          {
+            users.push(User.fromHttp(u));
+          }
+          return users;
+      })
+    );
+  }
+
+  updateRoomBooking(room: Room) : Observable<Room>
+  {
+     return this.http.put<Room>(environment.apiUrl + '/rooms', room );
   }
 
 
-  constructor() { 
-    
-    //user dummy data
-    let user = new User();
-    user.id=1;
-    user.name = 'Nick';
-    user.email = 'nick.gerstbrein@uline.com';
-    user.role = 'admin';
-
-    let user1 = new User();
-    user1.id=2;
-    user1.name = 'Ron';
-    user1.email = 'ron@yahoo.com';
-    user1.role = 'user';
-
-    let user2 = new User();
-    user2.id=3;
-    user2.name = 'Praveen';
-    user2.email = 'praveen@yahoo.com';
-    user2.role = 'user';
-
-    let user3 = new User();
-    user3.id=4;
-    user3.name = 'Qwei';
-    user3.email = 'Qwei@yahoo.com';
-    user3.role = 'user';
-
-    let user4 = new User();
-    user4.id=5;
-    user4.name = 'Pengxiang';
-    user4.email = 'pengxiang@yahoo.com';
-    user4.role = 'user';
-    
-    this.users.push(user);
-    this.users.push(user1);
-    this.users.push(user2);
-    this.users.push(user3);
-    this.users.push(user4);
+  addUser(user: User): Observable<User>
+  {
+    return this.http.post<User>(environment.apiUrl + '/users', user);
+  }
+  updateUser(user: User): Observable<User>{
+    return this.http.put<User>(environment.apiUrl + '/users', user);
+  }
 
 
-    //room dummy data
-    let room = new Room();
-    room.id=1;
-    room.name= 'Ball room';
-    room.capacity=20;
-    room.isOpen= true;
-
-    let room1 = new Room();
-    room1.id=2;
-    room1.name= 'Conference room';
-    room1.capacity=30;
-    room1.isOpen= true;
-
-    let room2 = new Room();
-    room2.id=3;
-    room2.name= 'Arena';
-    room2.capacity=250;
-    room2.isOpen= true;
-
-    let room3 = new Room();
-    room3.id=4;
-    room3.name= 'Lounge';
-    room3.capacity=5;
-    room3.isOpen= true;
-
-    this.rooms.push(room);
-    this.rooms.push(room1);
-    this.rooms.push(room2);
-    this.rooms.push(room3);
-
+  constructor(private http: HttpClient) {
 
   }
 }
