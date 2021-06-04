@@ -22,6 +22,8 @@
                 <input type="time" class="form-control" id="time" formControlName="startTime" required>
                 <label for="location">End Time</label>
                 <input type="time" class="form-control" id="time" formControlName="endTime" required>
+                <label>Date</label>
+                <input type="date" class="form-control" id="date" formControlName="date" required>
             </div>
             <button type="button" class="btn btn-primary" (click)= "onSubmit()" [disabled] = "roomForm.controls['numOccupants'].errors">Save</button>
         </form>

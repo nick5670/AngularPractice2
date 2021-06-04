@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
 
   navigateToHome()
   {
-    this.router.navigate(['home']);
+    this.router.navigate(['']);
   }
 
 }

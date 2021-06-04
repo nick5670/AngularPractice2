@@ -26,6 +26,8 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
   
   public context!: RoomBookModalContext;
 
+  dataChangedEvent= new EventEmitter();
+
 
   constructor( public dialog: DialogRef<RoomBookModalContext>,
                public service: DataService,
@@ -68,7 +70,8 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
       bookerName : "Please enter your name",
       numOccupants : [0 ,Validators.max(this.bookingRoom.capacity)],
       startTime : '',
-      endTime : ''
+      endTime : '',
+      date: new Date()
 
     });
   }
@@ -88,14 +91,19 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
   
   onSubmit(){
     this.details.push(this.roomForm.value['bookerName']);
-    this.details.push(this.roomForm.value['numOccupants']);
     this.details.push(this.roomForm.value['startTime']);
     this.details.push(this.roomForm.value['endTime']);
 
+    this.bookingRoom.numPeople= this.roomForm.value['numOccupants'];
+    this.bookingRoom.date = this.roomForm.value['date'];
     this.bookingRoom.bookedRoomDetails= this.details;
     this.bookingRoom.isOpen= false;
 
-    this.service.updateRoomBooking(this.bookingRoom).subscribe();
+    this.service.updateRoomBooking(this.bookingRoom).subscribe(
+      next =>{
+        this.dataChangedEvent.emit();
+      }
+    );
 
     this.dialog.close();
     this.router.navigate(['rooms']);

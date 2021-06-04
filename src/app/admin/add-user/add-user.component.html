@@ -18,6 +18,13 @@
                 <option>user</option>
                 <option>admin</option>
             </select>
+
+            <div class="check">
+                <label>Agree to terms by checking box:</label>
+                <input id="confirm" type="checkbox" formControlName= "confirm">
+            </div>
+
+
             <button type = "button" class= "btn btn-primary" (click)= "onSubmit()">Add</button>
             <button type = "button" class= "btn btn-primary" (click)= "onCancel()">Cancel</button>
           </form> 

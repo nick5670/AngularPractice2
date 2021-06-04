@@ -30,7 +30,8 @@ export class AddUserComponent implements OnInit {
     this.addForm= this.formBuilder.group({
       username: this.username,
       email: '',
-      role: ''
+      role: '',
+      confirm: [false, Validators.requiredTrue]
     })
 
     this.service.getUsers().subscribe(
@@ -43,11 +44,19 @@ export class AddUserComponent implements OnInit {
 
   onSubmit()
   {
+      let id =0;
+      for(const user of this.users)
+      {
+        if(user.id > id)
+        {
+          id = user.id;
+        }
+      }
       let newUser= new User();
       newUser.email =this.addForm.value.email;
       newUser.name = this.addForm.value.username;
       newUser.role=this.addForm.value.role;
-      newUser.id= this.users.length+1;
+      newUser.id= id+1;
       this.service.addUser(newUser).subscribe(
         (user) =>
         {

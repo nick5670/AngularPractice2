@@ -7,6 +7,7 @@ export class Room{
     picture!: string;
     isOpen!: Boolean;
     bookedRoomDetails!: Array<string>;
+    date!: string;
 
 
     static fromHttp(room: Room)
@@ -15,9 +16,15 @@ export class Room{
         newRoom.id = room.id;
         newRoom.name = room.name;
         newRoom.isOpen = room.isOpen;
-        newRoom.numPeople = 0;
+        newRoom.numPeople = room.numPeople;
         newRoom.capacity= room.capacity;
-        newRoom.bookedRoomDetails = new Array<string>();
+        newRoom.bookedRoomDetails = room.bookedRoomDetails;
+        newRoom.date=room.date;
         return newRoom;
     } 
+
+    getDateAsDate()
+    {
+        return new Date(this.date);
+    }
 }

@@ -31,6 +31,7 @@ export class RoomsComponent implements OnInit {
             if(id)
             {
               this.selectedRoom = this.rooms.find(room =>room.id === +id)!
+              //console.log(this.selectedRoom);
             }
           }
         )

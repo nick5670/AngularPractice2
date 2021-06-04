@@ -68,5 +68,14 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['admin'], {queryParams: {id: id ,action: 'edit'}});
   }
 
+  deleteUser(id: number){
+    this.service.deleteUser(id).subscribe(
+      next =>{
+        this.loadData();
+      }
+
+    );
+  }
+
 
 }

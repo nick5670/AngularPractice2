@@ -45,7 +45,7 @@ export class DataService {
 
   updateRoomBooking(room: Room) : Observable<Room>
   {
-     return this.http.put<Room>(environment.apiUrl + '/rooms', room );
+     return this.http.put<Room>(environment.apiUrl + '/rooms/' + room.id, room );
   }
 
 
@@ -54,7 +54,11 @@ export class DataService {
     return this.http.post<User>(environment.apiUrl + '/users', user);
   }
   updateUser(user: User): Observable<User>{
-    return this.http.put<User>(environment.apiUrl + '/users', user);
+    return this.http.put<User>(environment.apiUrl + '/users/'+ user.id, user);
+  }
+
+  deleteUser(id: number){
+    return this.http.delete(environment.apiUrl + '/users/' + id);
   }
 
 
