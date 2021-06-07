@@ -20,10 +20,15 @@ import { ModalModule } from 'ngx-modialog-7';
 import { BootstrapModalModule } from 'ngx-modialog-7/plugins/bootstrap';
 import { RoomBookModalComponent } from './rooms/room-book-modal/room-book-modal.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TermsModalComponent } from './admin/terms-modal/terms-modal.component';
+import { LoginComponent } from './login/login.component';
+import { AuthRouteGuardService } from './auth-route-guard.service';
+import { DatePipe } from '@angular/common';
 
 const routes: Routes =[
-  {path: 'admin', component: AdminComponent},
-  {path: 'rooms', component: RoomsComponent},
+  {path: 'admin', component: AdminComponent}, //canActivate: [AuthRouteGuardService]},
+  {path: 'rooms', component: RoomsComponent},//canActivate: [AuthRouteGuardService]},
+  {path: 'login', component: LoginComponent},
   {path: '' , component: HomeComponent}
 ];
 
@@ -40,7 +45,9 @@ const routes: Routes =[
     EditUserComponent,
     ModalComponent,
     BookedInfoComponent,
-    RoomBookModalComponent
+    RoomBookModalComponent,
+    TermsModalComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +61,7 @@ const routes: Routes =[
   exports:[
     RouterModule
   ],
-  providers: [DataService],
+  providers: [DataService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

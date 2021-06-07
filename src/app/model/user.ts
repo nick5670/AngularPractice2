@@ -4,6 +4,7 @@ export class User{
     name!: string;
     email!: string;
     role!: string;
+    password!: string;
 
     static fromHttp(user: User) : User{
         const newUser = new User();
@@ -11,6 +12,7 @@ export class User{
         newUser.name = user.name;
         newUser.email = user.email;
         newUser.role = user.role;
+        newUser.password = user.password;
         return newUser;
     }
 

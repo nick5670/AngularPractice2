@@ -22,9 +22,4 @@ export class Room{
         newRoom.date=room.date;
         return newRoom;
     } 
-
-    getDateAsDate()
-    {
-        return new Date(this.date);
-    }
 }

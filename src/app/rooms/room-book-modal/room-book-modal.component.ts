@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -5,6 +6,7 @@ import { DialogRef, ModalComponent } from 'ngx-modialog-7';
 import { BSModalContext } from 'ngx-modialog-7/plugins/bootstrap';
 import { DataService } from 'src/app/data.service';
 import { Room } from 'src/app/model/room';
+import { RoomsComponent } from '../rooms.component';
 
 export class RoomBookModalContext extends BSModalContext{
   public title!: string;
@@ -23,6 +25,8 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
 
   details = new Array<string>();
   roomForm!: FormGroup;
+
+  current = new Date();
   
   public context!: RoomBookModalContext;
 
@@ -33,7 +37,8 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
                public service: DataService,
                private builder: FormBuilder,
                private router: Router,
-               private route: ActivatedRoute) { 
+               private route: ActivatedRoute,
+               private datePipe: DatePipe) { 
   }
 
   loadData()
@@ -98,6 +103,7 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
     this.bookingRoom.date = this.roomForm.value['date'];
     this.bookingRoom.bookedRoomDetails= this.details;
     this.bookingRoom.isOpen= false;
+
 
     this.service.updateRoomBooking(this.bookingRoom).subscribe(
       next =>{

@@ -8,13 +8,13 @@
 	<div class="container">
 		<div class="row row-striped">
 			<div class="col-2 text-right">
-				<h1 class="display-4"><span class="badge badge-secondary">{{bookedInfo.getDateAsDate() | date: 'dd'}}</span></h1>
-				<h2>{{bookedInfo.getDateAsDate() | date: 'MMM'}}</h2>
+				<h1 class="display-4"><span class="badge badge-secondary">{{bookedInfo.date | date: 'dd'}}</span></h1>
+				<h2>{{bookedInfo.date | date: 'MMM'}}</h2>
 			</div>
 			<div class="col-10">
 				<h3 class="text-uppercase"><strong>Booking Details:</strong></h3>
 				<ul class="list-inline">
-				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{bookedInfo.getDateAsDate() | date: 'EEE'}}</li>
+				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{bookedInfo.date | date: 'EEE'}}</li>
 					<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{bookedInfo.bookedRoomDetails[1]}} - {{bookedInfo.bookedRoomDetails[2]}}</li>
 					<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{bookedInfo.name}}</li>
 				</ul>

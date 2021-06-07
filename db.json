@@ -4,43 +4,57 @@
       "email": "nickg@gmail.com",
       "name": "Nick",
       "role": "admin",
-      "id": 1
+      "id": 1,
+      "password": "secret"
     },
     {
       "email": "ron@yahoo.com",
       "name": "Ron",
       "role": "user",
-      "id": 2
+      "id": 2,
+      "password": "secret1"
     },
     {
       "email": "praveen@uline.com",
       "name": "Praveen",
       "role": "user",
-      "id": 3
+      "id": 3,
+      "password": "secret2"
+    },
+    {
+      "email": "jandj@hotmail.com",
+      "name": "Jean",
+      "role": "user",
+      "id": 4,
+      "password": "secret3"
     }
   ],
   "rooms": [
     {
       "id": 1,
       "name": "Ball room",
-      "isOpen": true,
-      "numPeople": 20,
+      "isOpen": false,
+      "numPeople": 14,
       "capacity": 20,
       "bookedRoomDetails": [
         "Nick",
-        "16:56",
-        "17:56"
+        "16:20",
+        "17:20"
       ],
-      "date": "2021-06-05"
+      "date": "2021-06-10"
     },
     {
       "id": 2,
       "name": "Conference room",
-      "isOpen": true,
-      "numPeople": 5,
+      "isOpen": false,
+      "numPeople": 3,
       "capacity": 30,
-      "bookedRoomDetails": [],
-      "date": ""
+      "bookedRoomDetails": [
+        "Ron",
+        "10:00",
+        "10:30"
+      ],
+      "date": "2021-06-08"
     },
     {
       "id": 3,

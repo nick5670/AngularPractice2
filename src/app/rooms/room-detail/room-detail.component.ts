@@ -8,10 +8,6 @@ import { Room } from 'src/app/model/room';
 import { RoomBookModalComponent } from '../room-book-modal/room-book-modal.component';
 
 
-export class RoomDetailModalContext extends BSModalContext{
-  public title!: string;
-}
-
 @Component({
   selector: 'app-room-detail',
   templateUrl: './room-detail.component.html',
