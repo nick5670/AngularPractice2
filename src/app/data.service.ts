@@ -29,7 +29,7 @@ export class DataService {
 
   getUsers(): Observable<Array<User>>
   {
-    return this.http.get<Array<User>>(environment.apiUrl +'/users')
+    return this.http.get<Array<User>>(environment.apiUrl +"/users")
     .pipe(
       map( data => 
         {
@@ -43,6 +43,10 @@ export class DataService {
     );
   }
 
+  getUser(id: number): Observable<User>{
+    return this.http.get<User>(environment.apiUrl + '/users/' + id)
+  }
+
   updateRoomBooking(room: Room) : Observable<Room>
   {
      return this.http.put<Room>(environment.apiUrl + '/rooms/' + room.id, room );
@@ -53,12 +57,22 @@ export class DataService {
   {
     return this.http.post<User>(environment.apiUrl + '/users', user);
   }
+
+  addRoom(room: Room): Observable<Room>
+  {
+    return this.http.post<Room>(environment.apiUrl + '/rooms', room);
+  }
+
   updateUser(user: User): Observable<User>{
     return this.http.put<User>(environment.apiUrl + '/users/'+ user.id, user);
   }
 
   deleteUser(id: number){
     return this.http.delete(environment.apiUrl + '/users/' + id);
+  }
+
+  deleteRoom(id: number){
+    return this.http.delete(environment.apiUrl + '/rooms/' + id);
   }
 
 

@@ -1,10 +1,10 @@
 {
   "users": [
     {
-      "email": "nickg@gmail.com",
-      "name": "Nick",
-      "role": "admin",
       "id": 1,
+      "name": "Nick",
+      "email": "nickg@uline.com",
+      "role": "admin",
       "password": "secret"
     },
     {
@@ -15,18 +15,18 @@
       "password": "secret1"
     },
     {
-      "email": "praveen@uline.com",
-      "name": "Praveen",
-      "role": "user",
       "id": 3,
-      "password": "secret2"
+      "name": "Praveen",
+      "email": "praveen@uline.com",
+      "role": "user",
+      "password": ""
     },
     {
       "email": "jandj@hotmail.com",
-      "name": "Jean",
+      "name": "Jim",
       "role": "user",
-      "id": 4,
-      "password": "secret3"
+      "password": "",
+      "id": 4
     }
   ],
   "rooms": [
@@ -34,43 +34,39 @@
       "id": 1,
       "name": "Ball room",
       "isOpen": false,
-      "numPeople": 14,
+      "numPeople": 0,
       "capacity": 20,
       "bookedRoomDetails": [
-        "Nick",
-        "16:20",
-        "17:20"
+        "1",
+        "",
+        ""
       ],
-      "date": "2021-06-10"
+      "date": "2021-06-08T20:18:03.438Z"
     },
     {
       "id": 2,
       "name": "Conference room",
-      "isOpen": false,
-      "numPeople": 3,
+      "isOpen": true,
+      "numPeople": 24,
       "capacity": 30,
-      "bookedRoomDetails": [
-        "Ron",
-        "10:00",
-        "10:30"
-      ],
-      "date": "2021-06-08"
+      "bookedRoomDetails": [],
+      "date": ""
     },
     {
       "id": 3,
       "name": "Arena",
       "isOpen": true,
-      "numPeople": 0,
+      "numPeople": 4,
       "capacity": 250,
       "bookedRoomDetails": [],
       "date": ""
     },
     {
       "id": 4,
-      "numPeople": 0,
       "name": "Lounge",
-      "capacity": 5,
       "isOpen": true,
+      "numPeople": 0,
+      "capacity": 5,
       "bookedRoomDetails": [],
       "date": ""
     }

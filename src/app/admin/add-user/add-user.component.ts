@@ -55,6 +55,10 @@ export class AddUserComponent implements OnInit {
 
   onSubmit()
   {
+
+    const result = confirm('Are you sure you want to add this user?');
+
+    if(result){
       let id =0;
       for(const user of this.users)
       {
@@ -76,6 +80,7 @@ export class AddUserComponent implements OnInit {
           this.router.navigate(['admin']);
         }
       );
+    }
     
   }
 

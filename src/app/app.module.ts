@@ -16,7 +16,7 @@ import { EditUserComponent } from './admin/edit-user/edit-user.component';
 import { ModalComponent } from './modal/modal.component';
 import { BookedInfoComponent } from './rooms/booked-info/booked-info.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ModalModule } from 'ngx-modialog-7';
+import { DialogRef, ModalModule } from 'ngx-modialog-7';
 import { BootstrapModalModule } from 'ngx-modialog-7/plugins/bootstrap';
 import { RoomBookModalComponent } from './rooms/room-book-modal/room-book-modal.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,10 +24,13 @@ import { TermsModalComponent } from './admin/terms-modal/terms-modal.component';
 import { LoginComponent } from './login/login.component';
 import { AuthRouteGuardService } from './auth-route-guard.service';
 import { DatePipe } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserInfoComponent } from './rooms/user-info/user-info.component';
+import { AddRoomComponent } from './admin/add-room/add-room.component';
 
 const routes: Routes =[
-  {path: 'admin', component: AdminComponent}, //canActivate: [AuthRouteGuardService]},
-  {path: 'rooms', component: RoomsComponent},//canActivate: [AuthRouteGuardService]},
+  {path: 'admin', component: AdminComponent},//,canActivate: [AuthRouteGuardService]},
+  {path: 'rooms', component: RoomsComponent},
   {path: 'login', component: LoginComponent},
   {path: '' , component: HomeComponent}
 ];
@@ -47,7 +50,9 @@ const routes: Routes =[
     BookedInfoComponent,
     RoomBookModalComponent,
     TermsModalComponent,
-    LoginComponent
+    LoginComponent,
+    UserInfoComponent,
+    AddRoomComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,8 @@ const routes: Routes =[
     ReactiveFormsModule,
     ModalModule.forRoot(),
     BootstrapModalModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   exports:[
     RouterModule

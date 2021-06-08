@@ -1,8 +1,11 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Modal, overlayConfigFactory } from 'ngx-modialog-7';
+import { BSModalContext } from 'ngx-modialog-7/plugins/bootstrap';
 import { DataService } from 'src/app/data.service';
 import { Room } from 'src/app/model/room';
+import { UserInfoComponent } from '../user-info/user-info.component';
 
 @Component({
   selector: 'app-booked-info',
@@ -18,10 +21,10 @@ export class BookedInfoComponent implements OnInit {
 
   myDate= Date.now();    /*this.bookedInfo.date;*/
   constructor(private service: DataService,
-              private router: Router) { }
+              private router: Router,
+              private modal: Modal) { }
 
   ngOnInit(): void {
-    console.log(this.bookedInfo.date);
   }
 
   cancelBooking()
@@ -38,4 +41,13 @@ export class BookedInfoComponent implements OnInit {
     }
   }
 
+  showUser(id: string){
+    const modalConfig = {
+			isBlocking: false,
+			size: 'lg'}
+    this.router.navigate(['rooms'], {queryParams: {action: 'userview',id: id}});
+    this.modal.open(UserInfoComponent,overlayConfigFactory(modalConfig, BSModalContext));
+  }
+
 }
+

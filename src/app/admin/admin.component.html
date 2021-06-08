@@ -30,7 +30,28 @@
       </tbody>
     </table>
   </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">Capacity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let room of rooms | searchFilter: searchText" >
+        <td>{{room.id}}</td>
+        <td>{{room.name}}</td>
+        <td>{{room.capacity}}</td>
+        <td>
+        <button type="button" class="btn btn-primary" (click)="deleteRoom(room.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
   <button type="button" class="btn btn-primary" (click) ="addUser()">Add User</button>
-  <app-add-user *ngIf = "action === 'add'" (addedUserEvent) = "loadData()"></app-add-user>
+  <button type="button" class="btn btn-primary" (click) ="addRoom()">Add Room</button>
+  <app-add-user *ngIf = "action === 'add-user'" (addedUserEvent) = "loadData()"></app-add-user>
+  <app-add-room *ngIf = "action === 'add-room'" (addedRoomEvent) = "loadData()"></app-add-room>
   <app-edit-user *ngIf = "action === 'edit'" [user] = 'selectedUser'></app-edit-user>
 </div>

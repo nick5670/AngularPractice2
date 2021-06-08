@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
   selectedRole!: string;
   searchText: string ='';
   action!: string;
+  rooms!: Array<Room>
 
   constructor(private service: DataService,private formBuilder: FormBuilder,
               private router: Router,
@@ -32,6 +33,12 @@ export class AdminComponent implements OnInit {
     this.service.getUsers().subscribe(
       next =>{
         this.users= next;
+      }
+    );
+
+    this.service.getRooms().subscribe(
+      next =>{
+        this.rooms= next;
       }
     );
   }
@@ -60,7 +67,12 @@ export class AdminComponent implements OnInit {
 
   addUser()
   {
-    this.router.navigate(['admin'], {queryParams: {action: 'add'}});
+    this.router.navigate(['admin'], {queryParams: {action: 'add-user'}});
+  }
+
+  addRoom()
+  {
+    this.router.navigate(['admin'], {queryParams: {action: 'add-room'}});
   }
 
   editUser(id: number)
@@ -69,13 +81,29 @@ export class AdminComponent implements OnInit {
   }
 
   deleteUser(id: number){
-    this.service.deleteUser(id).subscribe(
-      next =>{
-        this.loadData();
-      }
 
-    );
+    const result = confirm('Are you sure you want to delete this user?');
+
+    if(result)
+    {
+      this.service.deleteUser(id).subscribe(
+          next =>{
+            this.loadData();
+          });
+    }
   }
 
+  deleteRoom(id: number){
+
+    const result = confirm('Are you sure you want to delete this room?');
+
+    if(result)
+    {
+      this.service.deleteRoom(id).subscribe(
+          next =>{
+            this.loadData();
+          });
+    }
+  }
 
 }

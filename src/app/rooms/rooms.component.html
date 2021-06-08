@@ -27,7 +27,6 @@
   <div><div class = 'key booked'></div> = Booked</div>
   <br>
   <div><div class = 'key open'></div> = Open</div>
-
   <app-room-detail [room] = 'selectedRoom' *ngIf = "action === 'view'"></app-room-detail>
   <app-booked-info *ngIf = "action === 'info'" [bookedInfo] = 'selectedRoom'></app-booked-info>
 </div>

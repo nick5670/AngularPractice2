@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
 import { interval } from 'rxjs';
@@ -14,12 +14,14 @@ import { Room } from '../model/room';
 export class RoomsComponent implements OnInit {
 
   rooms!: Array<Room>;
+
   selectedRoom!: Room;
   action!: string;
   faSquare= faSquare;
 
   constructor(private service: DataService, private router: Router,
               private route: ActivatedRoute, private datePipe: DatePipe) { }
+
 
 
   loadData()

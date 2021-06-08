@@ -30,6 +30,7 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
   
   public context!: RoomBookModalContext;
 
+  @Output()
   dataChangedEvent= new EventEmitter();
 
 
@@ -72,7 +73,7 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
     // Currently data from an older form is staying in thr form and not 
     // allowing for new data to be added
     this.roomForm = this.builder.group({
-      bookerName : "Please enter your name",
+      bookerId : "Please enter your Id",
       numOccupants : [0 ,Validators.max(this.bookingRoom.capacity)],
       startTime : '',
       endTime : '',
@@ -95,7 +96,7 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
   }
   
   onSubmit(){
-    this.details.push(this.roomForm.value['bookerName']);
+    this.details.push(this.roomForm.value['bookerId']);
     this.details.push(this.roomForm.value['startTime']);
     this.details.push(this.roomForm.value['endTime']);
 
