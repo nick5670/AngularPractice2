@@ -43,6 +43,7 @@ export class EditUserComponent implements OnInit {
 
   onSubmit()
   {
+    const result = confirm('Are you sure you want to submit these changes for ' + this.user.name+'?');
     this.user.name =this.editForm.value['username'];
     this.user.email =this.editForm.value['email']
     this.user.role =this.editForm.value['role']

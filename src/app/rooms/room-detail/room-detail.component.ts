@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogRef, Modal, ModalComponent, overlayConfigFactory } from 'ngx-modialog-7';
@@ -13,7 +13,7 @@ import { RoomBookModalComponent } from '../room-book-modal/room-book-modal.compo
   templateUrl: './room-detail.component.html',
   styleUrls: ['./room-detail.component.css']
 })
-export class RoomDetailComponent implements OnInit{
+export class RoomDetailComponent implements OnInit, OnChanges{
 
   @Input()
   room!: Room;
@@ -23,6 +23,11 @@ export class RoomDetailComponent implements OnInit{
   
   constructor(private router: Router, private route: ActivatedRoute,
               private modal: Modal, private service: DataService) { }
+
+
+  ngOnChanges(): void{
+    this.ngOnInit();
+  }
 
   ngOnInit(): void {
 

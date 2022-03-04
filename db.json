@@ -4,7 +4,6 @@
       "email": "user1@gmail.com",
       "name": "User 1",
       "role": "admin",
-      "id": 1,
       "password": "secret"
     },
     {
@@ -18,15 +17,14 @@
       "email": "user3@huskers.unl.edu",
       "name": "User 3",
       "role": "user",
-      "id": 3,
-      "password": "secret2"
+      "password": ""
     },
     {
       "email": "user4@hotmail.com",
       "name": "User 4",
       "role": "user",
-      "id": 4,
-      "password": "secret3"
+      "password": "",
+      "id": 4
     }
   ],
   "rooms": [
@@ -37,11 +35,11 @@
       "numPeople": 14,
       "capacity": 20,
       "bookedRoomDetails": [
-        "Nick",
-        "16:20",
-        "17:20"
+        "1",
+        "",
+        ""
       ],
-      "date": "2021-06-10"
+      "date": "2021-06-08T20:18:03.438Z"
     },
     {
       "id": 2,
@@ -49,28 +47,24 @@
       "isOpen": true,
       "numPeople": 3,
       "capacity": 30,
-      "bookedRoomDetails": [
-        "Ron",
-        "10:00",
-        "10:30"
-      ],
-      "date": "2021-06-08"
+      "bookedRoomDetails": [],
+      "date": ""
     },
     {
       "id": 3,
       "name": "Arena",
       "isOpen": true,
-      "numPeople": 0,
+      "numPeople": 4,
       "capacity": 250,
       "bookedRoomDetails": [],
       "date": ""
     },
     {
       "id": 4,
-      "numPeople": 0,
       "name": "Lounge",
-      "capacity": 5,
       "isOpen": true,
+      "numPeople": 0,
+      "capacity": 5,
       "bookedRoomDetails": [],
       "date": ""
     }

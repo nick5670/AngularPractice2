@@ -20,7 +20,7 @@
 				</ul>
 				<div class="row">
                     <div class="col-6">
-                      <p class="mb-0">Booked by : {{bookedInfo.bookedRoomDetails[0]}}</p>
+                      <p class="mb-0" (click) = "showUser(bookedInfo.bookedRoomDetails[0])">Booker User Id : {{bookedInfo.bookedRoomDetails[0]}}</p>
                       <p>Participants: {{bookedInfo.numPeople}}</p>
                     </div>
                     <div class="col-6">

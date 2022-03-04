@@ -30,6 +30,7 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
   
   public context!: RoomBookModalContext;
 
+  @Output()
   dataChangedEvent= new EventEmitter();
 
 
@@ -95,7 +96,7 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
   }
   
   onSubmit(){
-    this.details.push(this.roomForm.value['bookerName']);
+    this.details.push(this.roomForm.value['bookerId']);
     this.details.push(this.roomForm.value['startTime']);
     this.details.push(this.roomForm.value['endTime']);
 
