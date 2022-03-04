@@ -1,29 +1,29 @@
 {
   "users": [
     {
-      "email": "nickg@gmail.com",
-      "name": "Nick",
+      "email": "user1@gmail.com",
+      "name": "User 1",
       "role": "admin",
       "id": 1,
       "password": "secret"
     },
     {
-      "email": "ron@yahoo.com",
-      "name": "Ron",
+      "email": "user2@yahoo.com",
+      "name": "User 4",
       "role": "user",
       "id": 2,
       "password": "secret1"
     },
     {
-      "email": "praveen@uline.com",
-      "name": "Praveen",
+      "email": "user3@huskers.unl.edu",
+      "name": "User 3",
       "role": "user",
       "id": 3,
       "password": "secret2"
     },
     {
-      "email": "jandj@hotmail.com",
-      "name": "Jean",
+      "email": "user4@hotmail.com",
+      "name": "User 4",
       "role": "user",
       "id": 4,
       "password": "secret3"
@@ -33,7 +33,7 @@
     {
       "id": 1,
       "name": "Ball room",
-      "isOpen": false,
+      "isOpen": true,
       "numPeople": 14,
       "capacity": 20,
       "bookedRoomDetails": [
@@ -46,7 +46,7 @@
     {
       "id": 2,
       "name": "Conference room",
-      "isOpen": false,
+      "isOpen": true,
       "numPeople": 3,
       "capacity": 30,
       "bookedRoomDetails": [
