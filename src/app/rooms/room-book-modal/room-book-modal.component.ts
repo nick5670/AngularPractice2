@@ -44,7 +44,7 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
   loadData()
   {
     this.service.getRooms().subscribe(
-      next => {
+      (      next: Room[]) => {
         this.rooms = next;
         this.processUrlParams();
         this.createForm();
@@ -55,7 +55,7 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
   processUrlParams()
   {
     this.route.queryParams.subscribe(
-      (params)=>{
+      (params: { [x: string]: string; })=>{
         const id = params['id'];
         if(params['action'] === 'book')
         {
@@ -72,7 +72,7 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
     // Currently data from an older form is staying in thr form and not 
     // allowing for new data to be added
     this.roomForm = this.builder.group({
-      bookerName : "Please enter your name",
+      bookerId : "Please enter your Id",
       numOccupants : [0 ,Validators.max(this.bookingRoom.capacity)],
       startTime : '',
       endTime : '',
@@ -106,7 +106,7 @@ export class RoomBookModalComponent implements OnInit, ModalComponent<RoomBookMo
 
 
     this.service.updateRoomBooking(this.bookingRoom).subscribe(
-      next =>{
+      (      next: any) =>{
         this.dataChangedEvent.emit();
       }
     );
